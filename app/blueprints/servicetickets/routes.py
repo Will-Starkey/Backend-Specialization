@@ -2,7 +2,7 @@ from .schemas import service_ticket_schema, service_tickets_schema
 from flask import request, jsonify
 from marshmallow import ValidationError
 from sqlalchemy import select
-from app.models import ServiceTicket, db
+from app.models import ServiceTicket, Mechanic, ServiceMechanic, db
 from . import service_tickets_bp
 
 
@@ -58,6 +58,33 @@ def update_service_ticket(service_ticket_id):
     db.session.commit()
     return service_ticket_schema.jsonify(service_ticket), 200
     
+# ASSIGN MECHANICS TO Service Ticket
+@service_tickets_bp.route("/<int:service_ticket_id>/mechanics", methods=['PUT'])
+def assign_mechanics(service_ticket_id):
+    service_ticket = db.session.get(ServiceTicket, service_ticket_id)
+
+    if not service_ticket:
+        return jsonify({"error": "Service Ticket not found."}), 404
+
+    mechanic_ids = request.json.get("mechanic_ids", [])
+
+    mechanics = []
+    for mechanic_id in mechanic_ids:
+        mechanic = db.session.get(Mechanic, mechanic_id)
+        if not mechanic:
+            return jsonify({"error": f"Mechanic with id {mechanic_id} not found."}), 400
+        mechanics.append(mechanic)
+
+    service_ticket.mechanic_assignments.clear()
+
+    for mechanic in mechanics:
+        assignment = ServiceMechanic(ticket_id=service_ticket_id, mechanic_id=mechanic.id)
+        db.session.add(assignment)
+
+    db.session.commit()
+    return service_ticket_schema.jsonify(service_ticket), 200
+
+
 #DELETE SPECIFIC Service Ticket
 @service_tickets_bp.route("/<int:service_ticket_id>", methods=['DELETE'])
 def delete_service_ticket(service_ticket_id):
