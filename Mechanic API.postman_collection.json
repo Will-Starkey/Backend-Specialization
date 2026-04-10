@@ -52,7 +52,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"email\": \"mattsmith@gmail.com\",\n    \"name\": \"Matt Smith\",\n    \"phone\": \"123 456 7890\"\n}",
+          "raw": "{\n    \"email\": \"testemail@gmail.com\",\n    \n    \"password\": \"testpassword\"\n    \n}",
           "options": {
             "raw": {
               "language": "json"
@@ -60,7 +60,7 @@
           }
         },
         "url": {
-          "raw": "http://127.0.0.1:5000/customers",
+          "raw": "http://127.0.0.1:5000/customers/login",
           "protocol": "http",
           "host": [
             "127",
@@ -70,7 +70,8 @@
           ],
           "port": "5000",
           "path": [
-            "customers"
+            "customers",
+            "login"
           ]
         }
       },
@@ -409,6 +410,449 @@
           "port": "5000",
           "path": [
             "service_tickets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/customers/login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"testemail@gmail.com\",\n    \n    \"password\": \"testpassword\"\n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/customers/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "customers",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/customers",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"testemail@gmail.com\",\n    \"name\": \"Brad Test\",\n    \"phone\": \"123 456 7890\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/customers",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/customers",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NjkyMTQsImlhdCI6MTc3NTY2NTYxNCwic3ViIjoxfQ.fTyAGZL0682SxoEYxKMYLQItz39TD1fbMF_aWq0VUps",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"testemail@gmail.com\",\n    \"name\": \"Brad Test\",\n    \"phone\": \"123 456 7890\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/customers",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/customers/",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NzA3MzYsImlhdCI6MTc3NTY2NzEzNiwic3ViIjoiMSJ9.G4gOw7bKRjs2WDhZzTZFVYilZtgyeJf5jT8--soiiBQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "javascript"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/customers/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "customers",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/mechanics",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"mechanic@gmail.com\",\n    \"name\": \"Jason Doe\",\n    \"password\": \"testpassword\",\n    \"phone\": \"1234567890\",\n    \"salary\": \"36\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/mechanics",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "mechanics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/mechanics/login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\": \"mechanic@gmail.com\",\n\n    \"password\": \"testpassword\"\n  \n    \n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/mechanics/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "mechanics",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/mechanics",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NzIyNTAsImlhdCI6MTc3NTY2ODY1MCwic3ViIjoiMSJ9.17Nu64a5dzXnWtcggFxlkG2W4lf4-yOxkipOIKj5jJk",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/mechanics",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "mechanics"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/service_tickets/my-tickets",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NzQyNDUsImlhdCI6MTc3NTY3MDY0NSwic3ViIjoiMSJ9.JnytPFUK77z2C8L39gh_Da51JCJO1YqlgT4iPrVES2c",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:5000/service_tickets/my-tickets",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "service_tickets",
+            "my-tickets"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/inventory",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Brake Pads\",\n    \"price\": \"200\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/inventory",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "inventory"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/service_tickets/1/add-part",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NzQyNDUsImlhdCI6MTc3NTY3MDY0NSwic3ViIjoiMSJ9.JnytPFUK77z2C8L39gh_Da51JCJO1YqlgT4iPrVES2c",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"inventory_id\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/service_tickets/1/add-part",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "service_tickets",
+            "1",
+            "add-part"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/service_tickets/1/edit",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NzQyNDUsImlhdCI6MTc3NTY3MDY0NSwic3ViIjoiMSJ9.JnytPFUK77z2C8L39gh_Da51JCJO1YqlgT4iPrVES2c",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"add_ids\": [2,3]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/service_tickets/1/edit",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "service_tickets",
+            "1",
+            "edit"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://127.0.0.1:5000/service_tickets/1/edit",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NzU2NzQyNDUsImlhdCI6MTc3NTY3MDY0NSwic3ViIjoiMSJ9.JnytPFUK77z2C8L39gh_Da51JCJO1YqlgT4iPrVES2c",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"remove_ids\": [3]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:5000/service_tickets/1/edit",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "5000",
+          "path": [
+            "service_tickets",
+            "1",
+            "edit"
           ]
         }
       },

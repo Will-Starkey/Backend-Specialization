@@ -1,7 +1,7 @@
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Table, Column, Integer
 from typing import Optional
 import datetime
 import decimal
@@ -24,8 +24,17 @@ class Customer(Base):
     name: Mapped[str] = mapped_column(db.String(255), nullable=False)
     email: Mapped[str] = mapped_column(db.String(360), nullable=False, unique=True)
     phone: Mapped[str] = mapped_column(db.String(20), nullable=False)
+    password: Mapped[str] = mapped_column(db.String(100), nullable=False)
 
     service_tickets: Mapped[list["ServiceTicket"]] = relationship(back_populates="customer")
+
+
+service_ticket_inventory = Table(
+    'service_ticket_inventory',
+    Base.metadata,
+    Column('ticket_id', Integer, ForeignKey('service_tickets.id'), primary_key=True),
+    Column('inventory_id', Integer, ForeignKey('inventory.id'), primary_key=True)
+)
 
 
 class ServiceTicket(Base):
@@ -39,6 +48,7 @@ class ServiceTicket(Base):
 
     customer: Mapped["Customer"] = relationship(back_populates="service_tickets")
     mechanic_assignments: Mapped[list["ServiceMechanic"]] = relationship(back_populates="ticket")
+    parts: Mapped[list["Inventory"]] = relationship(secondary=service_ticket_inventory, back_populates="service_tickets")
 
 
 class Mechanic(Base):
@@ -49,8 +59,19 @@ class Mechanic(Base):
     email: Mapped[str] = mapped_column(db.String(360), nullable=False, unique=True)
     phone: Mapped[str] = mapped_column(db.String(20), nullable=False)
     salary: Mapped[decimal.Decimal] = mapped_column(db.Numeric(10, 2), nullable=False)
+    password: Mapped[str] = mapped_column(db.String(100), nullable=False)
 
     ticket_assignments: Mapped[list["ServiceMechanic"]] = relationship(back_populates="mechanic")
+
+
+class Inventory(Base):
+    __tablename__ = 'inventory'
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(db.String(255), nullable=False)
+    price: Mapped[float] = mapped_column(db.Float, nullable=False)
+
+    service_tickets: Mapped[list["ServiceTicket"]] = relationship(secondary=service_ticket_inventory, back_populates="parts")
 
 
 class ServiceMechanic(Base):
