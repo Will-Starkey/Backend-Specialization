@@ -32,13 +32,13 @@ def login():
         
         return jsonify(response), 200
     else:
-        return jsonify({"message": "invalid email or password!"})
+        return jsonify({"message": "Invalid email or password!"}), 400
     
     
 
 # CREATE CUSTOMER 
 @customers_bp.route("/", methods=['POST'])
-@limiter.limit("50 per hour") 
+@limiter.limit("4 per hour") 
 def create_customer():
     try:
         customer_data = customer_schema.load(request.json)
@@ -92,7 +92,8 @@ def update_customer(customer_id):
         return jsonify(e.messages), 400
     
     for key, value in customer_data.items():
-        setattr(customer, key, value)
+        if value:
+            setattr(customer, key, value)
         
     db.session.commit()
     return customer_schema.jsonify(customer), 200
